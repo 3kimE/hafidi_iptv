@@ -2,12 +2,13 @@
 import 'package:flutter/material.dart';
 
 import 'Screens/HomeScreen.dart';
+import 'Screens/live.dart';
+import 'Screens/movie.dart';
 import 'Widgets/NavBar.dart';
 
-import 'favorite.dart';
-import 'home.dart';
-import 'live.dart';
-import 'movie.dart';
+import 'Screens/favorite.dart';
+import 'Screens/home.dart';
+
 
 
 void main() {

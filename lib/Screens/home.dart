@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
 
-import 'Screens/TableScreen.dart';
-import 'Widgets/LeagueContainer.dart';
-import 'Widgets/toprated.dart';
-import 'Widgets/trending.dart';
-import 'Widgets/tv.dart';
+import 'TableScreen.dart';
+import '../Widgets/LeagueContainer.dart';
+import '../Widgets/toprated.dart';
+import '../Widgets/trending.dart';
+import '../Widgets/tv.dart';
 
 class Sliderhome extends StatefulWidget {
   @override
