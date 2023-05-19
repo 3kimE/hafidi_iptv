@@ -155,7 +155,7 @@ class _SliderhomeState extends State<Sliderhome> {
                 SizedBox(
                   height: 10,
                 ),
-                TV(tv: tv),
+
                 TrendingMovies(
                   trending: trendingmovies,
                 ),
