@@ -12,7 +12,7 @@ class NavBar extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(accountName:
-          Text('karim elhafidi'), accountEmail: Text('example@gmail.com'),
+          Text(''), accountEmail: Text(''),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child:Image.network('https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg'
@@ -60,11 +60,7 @@ class NavBar extends StatelessWidget {
             onTap: ()=> Null,
           ),
 
-          ListTile(iconColor: Colors.deepPurpleAccent,
-            leading: Icon(Icons.exit_to_app),
-            title: Text('logout'),
-            onTap: ()=> Null,
-          ),
+
 
 
 

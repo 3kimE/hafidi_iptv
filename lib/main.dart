@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hafidi_iptv/Screens/News.dart';
+
+import 'Screens/News.dart';
 import 'Screens/live.dart';
 import 'Screens/movie.dart';
-import 'Widgets/NavBar.dart';
+import 'Screens/NavBar.dart';
 import 'Screens/favorite.dart';
 import 'Screens/home.dart';
 
@@ -44,28 +45,28 @@ class _MyHomePageState extends State<MyHomePage> {
             bottom: const TabBar(
               tabs: [
                 Tab(
-                  icon: Icon(Icons.home, color: Colors.white),
+                  icon: Icon(Icons.home, color: Colors.red),
                   text: 'Home',
                 ),
                 Tab(
-                  icon: Icon(Icons.newspaper, color: Colors.white),
+                  icon: Icon(Icons.newspaper, color: Colors.red),
                   text: 'News',
                 ),
                 Tab(
-                  icon: Icon(Icons.movie, color: Colors.white),
+                  icon: Icon(Icons.movie, color: Colors.red),
                   text: 'MOVIE',
                 ),
                 Tab(
-                  icon: Icon(Icons.live_tv, color: Colors.white),
+                  icon: Icon(Icons.live_tv, color: Colors.red),
                   text: 'LIVE',
                 ),
                 Tab(
-                  icon: Icon(Icons.favorite, color: Colors.white),
+                  icon: Icon(Icons.favorite, color: Colors.red),
                   text: 'FAVORITE',
                 ),
               ],
             ),
-            backgroundColor: Colors.deepPurpleAccent,
+            backgroundColor: Colors.black,
             toolbarHeight: 60,
             actions: [
               IconButton(
@@ -81,8 +82,8 @@ class _MyHomePageState extends State<MyHomePage> {
             child: TabBarView(
               children: [
                 Sliderhome(),
-                News(),
                 MOVIE(),
+                News(),
                 live(),
                 favorite(),
               ],
