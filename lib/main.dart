@@ -83,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Sliderhome(),
                 MOVIE(),
-                News(),
+                HomePage(),
                 live(),
                 favorite(),
               ],
