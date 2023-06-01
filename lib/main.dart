@@ -49,12 +49,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   text: 'Home',
                 ),
                 Tab(
-                  icon: Icon(Icons.newspaper, color: Colors.red),
-                  text: 'News',
+                  icon: Icon(Icons.movie, color: Colors.red),
+                  text: 'Movies',
                 ),
                 Tab(
-                  icon: Icon(Icons.movie, color: Colors.red),
-                  text: 'MOVIE',
+                  icon: Icon(Icons.newspaper, color: Colors.red),
+                  text: 'News',
                 ),
                 Tab(
                   icon: Icon(Icons.live_tv, color: Colors.red),
