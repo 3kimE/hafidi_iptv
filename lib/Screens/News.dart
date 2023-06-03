@@ -34,12 +34,12 @@ class News {
   }
 }
 
-class HomePage extends StatefulWidget {
+class HomeNws extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomeNwsState createState() => _HomeNwsState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeNwsState extends State<HomeNws> {
   News news = News();
   bool _loading = true;
 

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:tmdb_api/tmdb_api.dart';
 
-import '../Widgets/toprated.dart';
-import '../Widgets/trending.dart';
-import '../Widgets/tv.dart';
+import '../model/toprated.dart';
+import '../model/trending.dart';
+import '../model/tv.dart';
 import '../utils/text.dart';
 
 

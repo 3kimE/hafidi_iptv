@@ -3,17 +3,17 @@ import 'package:tmdb_api/tmdb_api.dart';
 
 
 import 'TableScreen.dart';
-import '../Widgets/LeagueContainer.dart';
-import '../Widgets/toprated.dart';
-import '../Widgets/trending.dart';
-import '../Widgets/tv.dart';
+import '../model/LeagueContainer.dart';
+import '../model/toprated.dart';
+import '../model/trending.dart';
+import '../model/tv.dart';
 
-class Sliderhome extends StatefulWidget {
+class Home2 extends StatefulWidget {
   @override
-  _SliderhomeState createState() => _SliderhomeState();
+  _Home2State createState() => _Home2State();
 }
 
-class _SliderhomeState extends State<Sliderhome> {
+class _Home2State extends State<Home2> {
   final String apikey = '67af5e631dcbb4d0981b06996fcd47bc';
   final String readaccesstoken =
       'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2N2FmNWU2MzFkY2JiNGQwOTgxYjA2OTk2ZmNkNDdiYyIsInN1YiI6IjYwNzQ1OTA0ZjkyNTMyMDAyOTFmZDczYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.C_Bkz_T8OybTGo3HfYsESNjN46LBYdw3LHdF-1TzYYs';
