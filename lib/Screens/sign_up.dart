@@ -1,12 +1,10 @@
+
 import 'package:flutter/material.dart';
-
 import '../utils/colors.dart';
-
 import '../utils/space.dart';
 import '../utils/text_fild.dart';
 import '../utils/text_style.dart';
 import '../utils/main_button.dart';
-
 import 'login_page.dart';
 
 
@@ -65,9 +63,6 @@ class _SignUpPageState extends State<SignUpPage> {
               Mainbutton(
                 onTap: () {
 
-                  Fire
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (builder) => LoginPage()));
                 },
                 text: 'Sign Up',
                 btnColor: blueButton,
@@ -75,7 +70,8 @@ class _SignUpPageState extends State<SignUpPage> {
               SpaceVH(height: 20.0),
               TextButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (builder) => LoginPage()));
                 },
                 child: RichText(
                   text: TextSpan(children: [

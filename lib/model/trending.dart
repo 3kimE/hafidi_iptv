@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 
-import 'description.dart';
+
+import '../utils/description.dart';
 import '../utils/text.dart';
 
 class TrendingMovies extends StatelessWidget {
