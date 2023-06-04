@@ -1,11 +1,11 @@
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import '../utils/colors.dart';
+import '../utils/main_button.dart';
 import '../utils/space.dart';
 import '../utils/text_fild.dart';
 import '../utils/text_style.dart';
-import '../utils/main_button.dart';
-import 'login_page.dart';
 
 
 class SignUpPage extends StatefulWidget {
@@ -44,7 +44,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 controller: userName,
                 image: 'user.svg',
                 keyBordType: TextInputType.name,
-                hintTxt: 'UserName',
+                hintTxt: 'Full Name',
               ),
               textFild(
                 controller: userEmail,
@@ -62,7 +62,14 @@ class _SignUpPageState extends State<SignUpPage> {
               SpaceVH(height: 80.0),
               Mainbutton(
                 onTap: () {
+                  FirebaseAuth.instance.createUserWithEmailAndPassword
+                    (email: userEmail.text, password: userPass.text).then((value){
+print("USER CREATED");
 
+                  }).onError((error, stackTrace) {
+
+                    print("Error${error.toString()}");
+                  });
                 },
                 text: 'Sign Up',
                 btnColor: blueButton,
@@ -70,8 +77,7 @@ class _SignUpPageState extends State<SignUpPage> {
               SpaceVH(height: 20.0),
               TextButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (builder) => LoginPage()));
+                  Navigator.pop(context);
                 },
                 child: RichText(
                   text: TextSpan(children: [
