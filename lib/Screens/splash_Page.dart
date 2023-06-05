@@ -11,6 +11,8 @@ import '../utils/space.dart';
 import '../utils/text_style.dart';
 import '../data/demo.dart';
 import '../utils/main_button.dart';
+import 'Home.dart';
+import 'News.dart';
 
 
 class Splash extends StatefulWidget {
@@ -73,7 +75,7 @@ class _SplashState extends State<Splash> {
                   Mainbutton(
                     onTap: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (builder) => SignInScreen()));
+                          MaterialPageRoute(builder: (builder) => Home()));
                     },
                     btnColor: Colors.deepPurple,
                     text: 'Get Started',

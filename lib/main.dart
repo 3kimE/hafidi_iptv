@@ -6,7 +6,6 @@ import 'package:hafidi_iptv/Screens/splash_Page.dart';
 
 
 
-
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

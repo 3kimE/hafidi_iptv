@@ -1,7 +1,23 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import '../model/newsmodel.dart';
+import 'package:http/http.dart' as http;
+
+
+class ArticleModel {
+  final String title;
+  final String urlToImage;
+  final String description;
+  final String url;
+  bool isFavorite;
+
+  ArticleModel({
+    @required this.title,
+    @required this.urlToImage,
+    @required this.description,
+    @required this.url,
+    this.isFavorite = false,
+  });
+}
 
 class News {
   List<ArticleModel> datatobesavedin = [];
@@ -42,6 +58,7 @@ class HomeNws extends StatefulWidget {
 class _HomeNwsState extends State<HomeNws> {
   News news = News();
   bool _loading = true;
+  List<ArticleModel> favoriteNews = [];
 
   @override
   void initState() {
@@ -53,6 +70,17 @@ class _HomeNwsState extends State<HomeNws> {
     await news.getNews();
     setState(() {
       _loading = false;
+    });
+  }
+
+  void _toggleFavorite(ArticleModel article) {
+    setState(() {
+      article.isFavorite = !article.isFavorite;
+      if (article.isFavorite) {
+        favoriteNews.add(article);
+      } else {
+        favoriteNews.remove(article);
+      }
     });
   }
 
@@ -77,8 +105,9 @@ class _HomeNwsState extends State<HomeNws> {
             : ListView.builder(
           itemCount: news.datatobesavedin.length,
           itemBuilder: (context, index) {
+            final article = news.datatobesavedin[index];
             return GestureDetector(
-              onTap: () => _showNewsDetails(news.datatobesavedin[index]),
+              onTap: () => _showNewsDetails(article),
               child: Card(
                 elevation: 3,
                 margin:
@@ -89,23 +118,46 @@ class _HomeNwsState extends State<HomeNws> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Image.network(
-                        news.datatobesavedin[index].urlToImage,
+                        article.urlToImage,
                         height: 200,
                         width: double.infinity,
                         fit: BoxFit.cover,
                       ),
-                      SizedBox(height: 8),
-                      Text(
-                        news.datatobesavedin[index].title,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        child: Row(
+                          mainAxisAlignment:
+                          MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Expanded(
+                              child: Text(
+                                article.title,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                            IconButton(
+                              icon: Icon(
+                                article.isFavorite
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: Colors.red,
+                              ),
+                              onPressed: () =>
+                                  _toggleFavorite(article),
+                            ),
+                          ],
                         ),
                       ),
                       SizedBox(height: 4),
-                      Text(
-                        news.datatobesavedin[index].description,
-                        style: TextStyle(fontSize: 14),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        child: Text(
+                          article.description,
+                          style: TextStyle(fontSize: 14),
+                        ),
                       ),
                     ],
                   ),
@@ -115,6 +167,21 @@ class _HomeNwsState extends State<HomeNws> {
           },
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => FavoriteNewsWidget(
+                favoriteNews: favoriteNews,
+              ),
+            ),
+          );
+        },
+        backgroundColor: Colors.red,
+        child: Icon(Icons.favorite),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
   }
 }
@@ -122,7 +189,7 @@ class _HomeNwsState extends State<HomeNws> {
 class NewsDetailPage extends StatelessWidget {
   final ArticleModel article;
 
-  NewsDetailPage({ this.article});
+  NewsDetailPage({this.article});
 
   @override
   Widget build(BuildContext context) {
@@ -165,3 +232,83 @@ class NewsDetailPage extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+class FavoriteNewsWidget extends StatefulWidget {
+  final List<ArticleModel> favoriteNews;
+
+  FavoriteNewsWidget({this.favoriteNews});
+
+  @override
+  _FavoriteNewsWidgetState createState() => _FavoriteNewsWidgetState();
+}
+
+class _FavoriteNewsWidgetState extends State<FavoriteNewsWidget> {
+  void _deleteNews(ArticleModel article) {
+    setState(() {
+      widget.favoriteNews.remove(article);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Favorite News',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.black,
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.deepPurple, Colors.black54],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: ListView.builder(
+          itemCount: widget.favoriteNews.length,
+          itemBuilder: (context, index) {
+            final article = widget.favoriteNews[index];
+            return ListTile(
+              title: Text(
+                article.title,
+                style: TextStyle(color: Colors.white),
+              ),
+              subtitle: Text(
+                article.description,
+                style: TextStyle(color: Colors.white),
+              ),
+              leading: Image.network(
+                article.urlToImage,
+                height: 60,
+                width: 60,
+                fit: BoxFit.cover,
+              ),
+              trailing: IconButton(
+                icon: Icon(Icons.delete),
+                onPressed: () => _deleteNews(article),
+                color: Colors.white,
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+
+

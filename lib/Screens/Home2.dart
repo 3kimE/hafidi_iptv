@@ -51,7 +51,10 @@ class _Home2State extends State<Home2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: SafeArea(
+
+
         child: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(

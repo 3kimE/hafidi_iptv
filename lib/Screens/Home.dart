@@ -83,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 MOVIE(),
                 HomeNws(),
                 live(),
-                favorite(),
+                FavoriteNewsWidget(),
               ],
             ),
           )),
