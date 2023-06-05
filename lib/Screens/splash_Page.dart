@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hafidi_iptv/Screens/signin_screen.dart';
 
-import 'package:hafidi_iptv/Screens/sign_up.dart';
 
-import '../utils/colors.dart';
 
+
+
+
+import '../utils/color_utils.dart';
 import '../utils/space.dart';
 import '../utils/text_style.dart';
 import '../data/demo.dart';
 import '../utils/main_button.dart';
-import 'login_page.dart';
+
 
 class Splash extends StatefulWidget {
   Splash({Key key}) : super(key: key);
@@ -70,9 +73,9 @@ class _SplashState extends State<Splash> {
                   Mainbutton(
                     onTap: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (builder) => SignUpPage()));
+                          MaterialPageRoute(builder: (builder) => SignInScreen()));
                     },
-                    btnColor: blueButton,
+                    btnColor: Colors.deepPurple,
                     text: 'Get Started',
                   ),
                 ],

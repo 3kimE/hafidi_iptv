@@ -30,6 +30,7 @@ class _TableScreenState extends State<TableScreen> {
     List<Widget> teams = [];
     for (var team in _table) {
       teams.add(
+
         Padding(
           padding: const EdgeInsets.all(10),
           child: Row(

@@ -7,10 +7,16 @@ import '../utils/text.dart';
 
 class TrendingMovies extends StatelessWidget {
   final List trending;
+   AppBar appBar() {
+
+    throw UnimplementedError();
+  }
 
   const TrendingMovies({Key key, this.trending}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+
+
     return Container(
       padding: EdgeInsets.all(10),
       child: Column(

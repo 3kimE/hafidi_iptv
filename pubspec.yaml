@@ -38,6 +38,8 @@ dependencies:
   firebase_auth: ^0.20.1
   firebase_core: ^0.7.0
 
+  youtube_player_flutter: ^8.0.0
+
 
 
 
@@ -62,6 +64,7 @@ flutter:
     - assets/image/
     - assets/icon/hide.svg
     - assets/icon/user.svg
+    - assets/images/
 
 
 

@@ -1,5 +1,15 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
+hexStringToColor(String hexColor) {
+  hexColor = hexColor.toUpperCase().replaceAll("#", "");
+  if (hexColor.length == 6) {
+    hexColor = "FF" + hexColor;
+  }
+  return Color(int.parse(hexColor, radix: 16));
+
+
+
+}
 const Color blueButton = Color(0xFF5468FF);
 const Color blueText = Color(0xFF4D60E7);
 

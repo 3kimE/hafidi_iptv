@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1086090774542",
-    "project_id": "hafidiiptv",
-    "storage_bucket": "hafidiiptv.appspot.com"
+    "project_number": "1036023348577",
+    "project_id": "iptv-6b239",
+    "storage_bucket": "iptv-6b239.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1086090774542:android:5cc22b2a26e6ec8267545f",
+        "mobilesdk_app_id": "1:1036023348577:android:f21e67741c4aa5a43c9920",
         "android_client_info": {
           "package_name": "com.example.hafidi_iptv"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1086090774542-d7enrvmm82q043pfu2gra8bjv9o0abib.apps.googleusercontent.com",
+          "client_id": "1036023348577-3kkst8eoate3l8fgoqf6qc4e08qiv7c2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBimAtMFM_DPnouqFA-cT49yB7IM6iW_WY"
+          "current_key": "AIzaSyAP31D4bfhqP4OC8gQpEmbhvcK40_Xus5g"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1086090774542-d7enrvmm82q043pfu2gra8bjv9o0abib.apps.googleusercontent.com",
+              "client_id": "1036023348577-3kkst8eoate3l8fgoqf6qc4e08qiv7c2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

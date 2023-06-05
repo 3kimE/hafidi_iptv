@@ -1,39 +1,72 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+
 
 class live extends StatefulWidget {
-  const live({Key key}) : super(key: key);
-
   @override
-  State<live> createState() => _liveState();
+  liveState createState() => liveState();
 }
 
-class _liveState extends State<live> {
+class liveState extends State<live> {
+  String _videoUrl = '';
+  YoutubePlayerController _controller;
+
+  void _playVideo() {
+    setState(() {
+      _controller = YoutubePlayerController(
+        initialVideoId: YoutubePlayer.convertUrlToId(_videoUrl) ?? '',
+        flags: YoutubePlayerFlags(
+          autoPlay: true,
+        ),
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller?.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: ListView(
+    return Scaffold(
+
+      body: Column(
         children: [
           Padding(
-            padding:  EdgeInsets.all(20.0),
-            child: TextField(
-
-              decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(vertical: 15.0),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                      borderSide: BorderSide(width: 0.9)),
-                  hintText: "Serash here",
-                  prefixIcon: Icon(
-                    Icons.search,
-                    size: 30.0,
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    onChanged: (value) {
+                      _videoUrl = value;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Enter YouTube video URL',
+                    ),
                   ),
-                  suffixIcon: IconButton(
-                    icon: Icon(Icons.clear),
-                    onPressed: () {},
-                  )),
+                ),
+                SizedBox(width: 16.0),
+                ElevatedButton(
+                  onPressed: _playVideo,
+                  child: Text('Play'),
+                ),
+              ],
             ),
-          )
+          ),
+          Expanded(
+            child: Center(
+              child: _controller != null
+                  ? YoutubePlayer(
+                controller: _controller,
+                showVideoProgressIndicator: true,
+              )
+                  : Text('Enter a YouTube video URL and click Play.'),
+            ),
+          ),
         ],
       ),
     );
