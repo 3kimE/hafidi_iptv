@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 
 
-import '../utils/description.dart';
+import '../Screens/description.dart';
 import '../utils/text.dart';
 
 class TrendingMovies extends StatelessWidget {
@@ -53,6 +53,7 @@ class TrendingMovies extends StatelessWidget {
                                           ['release_date'],
                                     )));
                       },
+
                       child: Container(
                         width: 140,
                         child: Column(
@@ -61,8 +62,8 @@ class TrendingMovies extends StatelessWidget {
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   image: NetworkImage(
-                                      'https://image.tmdb.org/t/p/w500' +
-                                          trending[index]['poster_path']),
+                                    'https://image.tmdb.org/t/p/w500' + trending[index]['poster_path'],
+                                  ),
                                 ),
                               ),
                               height: 200,
@@ -70,15 +71,19 @@ class TrendingMovies extends StatelessWidget {
                             SizedBox(height: 5),
                             Container(
                               child: modified_text(
-                                  size: 15,
-                                  text: trending[index]['title'] != null
-                                      ? trending[index]['title']
-                                      : 'Loading'),
-                            )
+                                size: 15,
+                                text: trending[index]['title'] != null ? trending[index]['title'] : 'Loading',
+                              ),
+                            ),
+                            SizedBox(height: 10), // Add a SizedBox for spacingFloatingActionButton( // Add a RaisedButton as the button
+
+                           // Set the button text
+
                           ],
                         ),
                       ),
                     );
+
                   }))
         ],
       ),

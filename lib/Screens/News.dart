@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'Home2.dart';
+
 
 class ArticleModel {
   final String title;
@@ -181,7 +183,7 @@ class _HomeNwsState extends State<HomeNws> {
         backgroundColor: Colors.red,
         child: Icon(Icons.favorite),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniStartTop,
     );
   }
 }
@@ -263,6 +265,7 @@ class _FavoriteNewsWidgetState extends State<FavoriteNewsWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
         title: Text(
           'Favorite News',

@@ -16,6 +16,7 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
+  bool _isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -57,11 +58,28 @@ class _SignInScreenState extends State<SignInScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                reusableTextField(
-                  "Enter Password",
-                  Icons.lock_outline,
-                  true,
-                  _passwordTextController,
+                Stack(
+                  alignment: Alignment.centerRight,
+                  children: [
+                    reusableTextField(
+                      "Enter Password",
+                      Icons.lock_outline,
+                      !_isPasswordVisible,
+                      _passwordTextController,
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        _isPasswordVisible
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _isPasswordVisible = !_isPasswordVisible;
+                        });
+                      },
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 5,
@@ -70,20 +88,32 @@ class _SignInScreenState extends State<SignInScreen> {
                 firebaseUIButton(context, "Sign In", () {
                   FirebaseAuth.instance
                       .signInWithEmailAndPassword(
-                    email: _emailTextController.text,
-                    password: _passwordTextController.text,
+                    email: _emailTextController.text.trim(),
+                    password: _passwordTextController.text.trim(),
                   )
                       .then((value) {
-
-
-                    Navigator.pushReplacement(
+                    // Sign-in successful
+                    Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => Home()),
                     );
-                  }).onError((error, stackTrace) {
-                    print("Error ${error.toString()}");
+
+                    // Show a success message
+                    final snackBar = SnackBar(
+                      content: Text('Sign In Successful'),
+                      backgroundColor: Colors.green,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }).catchError((error) {
+                    // Show an error message
+                    final snackBar = SnackBar(
+                      content: Text('Sign In Failed'),
+                      backgroundColor: Colors.red,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   });
                 }),
+
                 signUpOption(),
               ],
             ),

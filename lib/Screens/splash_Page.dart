@@ -75,7 +75,7 @@ class _SplashState extends State<Splash> {
                   Mainbutton(
                     onTap: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (builder) => Home()));
+                          MaterialPageRoute(builder: (builder) => SignInScreen()));
                     },
                     btnColor: Colors.deepPurple,
                     text: 'Get Started',

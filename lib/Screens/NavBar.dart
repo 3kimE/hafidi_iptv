@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'favorite.dart';
+
 
 class NavBar extends StatelessWidget {
   const NavBar({Key key}) : super(key: key);
@@ -12,7 +14,7 @@ class NavBar extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(accountName:
-          Text(''), accountEmail: Text(''),
+          Text('Hello'), accountEmail: Text(''),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child:Image.network('https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg'
@@ -33,30 +35,31 @@ class NavBar extends StatelessWidget {
 
           ),
 
-          ListTile(iconColor: Colors.deepPurpleAccent,
+          ListTile(iconColor: Colors.red,
             leading: Icon(Icons.favorite),
             title: Text('Favorite'),
+            onTap: ()=> favorite(),
+          ),
+          ListTile(iconColor: Colors.red,
+            leading: Icon(Icons.live_tv),
+            title: Text('Live'),
             onTap: ()=> Null,
           ),
-          ListTile(iconColor: Colors.deepPurpleAccent,
-            leading: Icon(Icons.security),
-            title: Text('security'),
+          ListTile(iconColor: Colors.red,
+            leading: Icon(Icons.movie),
+            title: Text('Movie'),
             onTap: ()=> Null,
           ),
-          ListTile(iconColor: Colors.deepPurpleAccent,
-            leading: Icon(Icons.group),
-            title: Text('Friends'),
+          ListTile(iconColor: Colors.red,
+            leading: Icon(Icons.newspaper),
+            title: Text('News'),
             onTap: ()=> Null,
           ),
           Divider(),
-          ListTile(iconColor: Colors.deepPurpleAccent,
-            leading: Icon(Icons.share),
-            title: Text('Sahre'),
-            onTap: ()=> Null,
-          ),
-          ListTile(iconColor: Colors.deepPurpleAccent,
-            leading: Icon(Icons.settings),
-            title: Text('Setting'),
+
+          ListTile(iconColor: Colors.red,
+            leading: Icon(Icons.exit_to_app),
+            title: Text('Logout'),
             onTap: ()=> Null,
           ),
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'Home2.dart';
 import 'NavBar.dart';
 import 'News.dart';
+
 import 'favorite.dart';
 import 'live.dart';
 import 'movie.dart';
@@ -31,12 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return DefaultTabController(
       length: 5,
       child: Scaffold(
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              openDialog();
-            },
-            child: const Icon(Icons.add_link),
-          ),
+
           drawer: NavBar(),
           appBar: AppBar(
             title: Text("IRON_DEV"),
@@ -83,25 +79,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 MOVIE(),
                 HomeNws(),
                 live(),
-                FavoriteNewsWidget(),
+                favorite(),
               ],
             ),
           )),
     );
   }
 
-  Future openDialog() => showDialog(
-    context: context,
-    builder: (context) => AlertDialog(
-      title: Text('add your lik'),
-      content: TextField(
-        decoration: InputDecoration(hintText: 'URL:'),
-      ),
-      actions: [
-        TextButton(onPressed: () {}, child: Text('Submit')),
-      ],
-    ),
-  );
+
 }
 
 class CustomSearch extends SearchDelegate {

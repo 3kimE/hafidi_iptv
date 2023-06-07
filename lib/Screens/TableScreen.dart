@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
 
+import 'Home.dart';
+
 class TableScreen extends StatefulWidget {
   final String code;
 
@@ -59,7 +61,9 @@ class _TableScreenState extends State<TableScreen> {
                   ],
                 ),
               ),
+
               Expanded(
+
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -102,6 +106,13 @@ class _TableScreenState extends State<TableScreen> {
             ),
           )
         : Scaffold(
+                 floatingActionButton: FloatingActionButton(
+                    onPressed: () { Navigator.push(context,
+                        MaterialPageRoute(builder: (builder) => Home()));
+                      },
+                          child: const Icon(Icons.arrow_back),
+                                    ),
+                         floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
             body: Container(
               decoration: BoxDecoration(
                   gradient: LinearGradient(
