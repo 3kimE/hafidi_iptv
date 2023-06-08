@@ -7,6 +7,7 @@ import 'News.dart';
 import 'favorite.dart';
 import 'live.dart';
 import 'movie.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 
@@ -21,19 +22,42 @@ class Home extends StatelessWidget {
   }
 }
 
+
+
+
+
+
+
+
 class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String userEmail = '';
+
+  @override
+  void initState() {
+    super.initState();
+    getUserEmail().then((email) {
+      setState(() {
+        userEmail = email;
+      });
+    });
+  }
+
+  Future<String> getUserEmail() async {
+    final user = await FirebaseAuth.instance.currentUser;
+    return user.email;
+  }
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 5,
       child: Scaffold(
 
-          drawer: NavBar(),
+          drawer: NavBar(userEmail: userEmail),
           appBar: AppBar(
             title: Text("IRON_DEV"),
             bottom: const TabBar(

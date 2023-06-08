@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hafidi_iptv/Screens/signin_screen.dart';
 
 import 'favorite.dart';
 
 
 class NavBar extends StatelessWidget {
-  const NavBar({Key key}) : super(key: key);
+  final String userEmail;
+
+  const NavBar({Key key, this.userEmail}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +16,8 @@ class NavBar extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          UserAccountsDrawerHeader(accountName:
-          Text('Hello'), accountEmail: Text(''),
+          UserAccountsDrawerHeader(
+          accountEmail: Text(userEmail),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child:Image.network('https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg'
@@ -60,7 +63,12 @@ class NavBar extends StatelessWidget {
           ListTile(iconColor: Colors.red,
             leading: Icon(Icons.exit_to_app),
             title: Text('Logout'),
-            onTap: ()=> Null,
+            onTap: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignInScreen()));
+
+            },
           ),
 
 

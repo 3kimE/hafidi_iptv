@@ -61,6 +61,7 @@ class _Home2State extends State<Home2> {
                 colors: [
                   const Color(0xff5e5c5c),
                   const Color(0xff020202),
+
                 ],
                 begin: const FractionalOffset(1.0, .0),
                 end: const FractionalOffset(0.0, 1.0),
