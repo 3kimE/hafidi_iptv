@@ -63,12 +63,35 @@ class NavBar extends StatelessWidget {
           ListTile(iconColor: Colors.red,
             leading: Icon(Icons.exit_to_app),
             title: Text('Logout'),
-            onTap: (){
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SignInScreen()));
-
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text('Logout Confirmation'),
+                    content: Text('Are you sure you want to logout?'),
+                    actions: [
+                      TextButton(
+                        child: Text('Cancel'),
+                        onPressed: () {
+                          Navigator.of(context).pop(); // Close the dialog
+                        },
+                      ),
+                      TextButton(
+                        child: Text('Logout'),
+                        onPressed: () {
+                          // Perform logout action here
+                          // TODO: Add your logout logic
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (builder) => SignInScreen()));
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
             },
+
           ),
 
 
